@@ -89,3 +89,32 @@ def get_longest_non_repeat_v2(string):
                 sub_string = string[start: index + 1]
         used_char[char] = index
     return max_len, sub_string
+
+
+## My solution solved unseen
+
+def unique(string):
+    return len(set(string)) == len(string)
+
+def longest_unique(string):
+    if len(string) == 0:
+        return 0
+    if len(string) == 1:
+        return 1
+    p0 = 0
+    p1 = 1
+    max_length = 0
+    while p1 < len(string):
+        if unique(string[p0:p1+1]):
+            curr_length = len(string[p0:p1+1])
+            print(string[p0:p1+1])
+            p1 += 1   
+        else:
+            p0 += 1
+            curr_length = 0
+            
+        max_length = max(max_length, curr_length)
+
+    return max_length
+            
+print(longest_unique('bbbbb'))
